@@ -5,7 +5,7 @@ using UnityEngine;
 public class LevelManger : MonoBehaviour
 {
 
-    public Vector3 spawnPosition;
+    public Vector2 spawnPosition;
 
     public Transform playerTransform;
 
@@ -13,7 +13,7 @@ public class LevelManger : MonoBehaviour
     void Update()
     {
         // if player falls below stage respawn
-        if(playerTransform.position.y < -10)
+        if (playerTransform.position.y < -10)
         {
             playerTransform.position = spawnPosition;
         }
