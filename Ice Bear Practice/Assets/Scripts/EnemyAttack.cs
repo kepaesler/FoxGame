@@ -20,6 +20,11 @@ public class EnemyAttack : MonoBehaviour
 
             HP.TakeDamage(enemyPower);
         }
+
+        if (other.gameObject.CompareTag("weapon"))
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     void Update()

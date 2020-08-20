@@ -203,12 +203,5 @@ public class CharacterController2D : MonoBehaviour
         wallJumping = false;
     }
 
-    // sirchacha collision
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("sirchacha"))
-        {
-            Destroy(other.gameObject);
-        }
-    }
+
 }

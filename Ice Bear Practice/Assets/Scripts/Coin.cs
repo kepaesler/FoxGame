@@ -27,7 +27,10 @@ public class Coin : MonoBehaviour
                 return;
             isColliding = true;
 
+            // count score
             ScoreManager.instance.ChangeScore(coinValue);
+            //delete sirchacha
+            Destroy(this.gameObject);
         }
     }
 
