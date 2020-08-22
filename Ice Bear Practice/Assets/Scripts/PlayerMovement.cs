@@ -45,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
     public void onLanding()
     {
         animator.SetBool("isJumping", false);
+        animator.SetBool("JumpAttack", false);
         Debug.Log("landed");
     }
 

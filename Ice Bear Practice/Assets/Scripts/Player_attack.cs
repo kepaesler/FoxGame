@@ -31,17 +31,20 @@ public class Player_attack : MonoBehaviour
 
     void Attack()
     {
+        //Debug.Log("atttacckkkk");
+        //animator.SetTrigger("Weapon_Attack");
+        //Debug.Log("atttacckkkk2");
 
         //if jumping do jump attack else reg attack
         if (animator.GetBool("isJumping"))
         {
-            animator.SetTrigger("JumpAttack");
-            animator.SetBool("isJumping", false);
+            animator.SetBool("JumpAttack", true);
         }
         else
         {
             animator.SetTrigger("Attack");
         }
+
     }
 
     private IEnumerator waitForSec(float sec)
