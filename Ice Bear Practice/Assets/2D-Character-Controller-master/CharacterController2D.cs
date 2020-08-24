@@ -153,6 +153,10 @@ public class CharacterController2D : MonoBehaviour
                 {
                     i = -1;
                 }
+                //make wall jump fixed so remove previous velocity
+                targetVelocity = new Vector2(0, 0);
+                m_Rigidbody2D.velocity = targetVelocity;
+
                 m_Rigidbody2D.AddForce(new Vector2(xWallForce * i, m_JumpForce));
                 Flip();
                 return;
