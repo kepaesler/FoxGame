@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelManager : MonoBehaviour
+public class LevelManger : MonoBehaviour
 {
 
     public Vector2 spawnPosition;
@@ -19,12 +19,7 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public void respawn()
-    {
-        playerTransform.position = spawnPosition;
-    }
-
-    public void ChangeSpawn(Vector2 spawn)
+    void ChangeSpawn(Vector2 spawn)
     {
         spawnPosition = spawn;
     }
