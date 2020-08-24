@@ -137,10 +137,25 @@ public class CharacterController2D : MonoBehaviour
             {
                 targetVelocity = new Vector2(move * 10f, Mathf.Clamp(m_Rigidbody2D.velocity.y, -wallSlidingSpeed, float.MaxValue));
             }
-            if (wallJumping)
+            else if (wallJumping)
             {
                 Debug.Log("walljump");
                 targetVelocity = new Vector2(m_Rigidbody2D.velocity.x, m_Rigidbody2D.velocity.y);
+                return;
+            }
+            //If player should wall jump
+            if (wallSliding && jump)
+            {
+                wallJumping = true;
+                Invoke("wallJumpFalse", wallJumpTime);
+                int i = 1;
+                if (m_FacingRight)
+                {
+                    i = -1;
+                }
+                m_Rigidbody2D.AddForce(new Vector2(xWallForce * i, m_JumpForce));
+                Flip();
+                return;
             }
             // And then smoothing it out and applying it to the character
             m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
@@ -166,24 +181,8 @@ public class CharacterController2D : MonoBehaviour
             m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
         }
 
-        //If player should wall jump
-        if (wallSliding && jump)
-        {
-            wallJumping = true;
-            Invoke("wallJumpFalse", wallJumpTime);
-            int i = 1;
-            if (m_FacingRight)
-            {
-                i = -1;
-            }
-            m_Rigidbody2D.AddForce(new Vector2(xWallForce * i, m_JumpForce));
-            Flip();
-        }
 
-        if (wallJumping)
-        {
-            //m_Rigidbody2D.AddForce(new Vector2(xWallForce * -1, m_JumpForce));
-        }
+
     }
 
 
