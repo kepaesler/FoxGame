@@ -19,6 +19,7 @@ public class CheckPoint : MonoBehaviour
         {
             //change respawn point
             //level.ChangeSpawn(spawn);
+            //LevelManager2.spawnPosition = spawn;
             Debug.Log("change");
         }
     }

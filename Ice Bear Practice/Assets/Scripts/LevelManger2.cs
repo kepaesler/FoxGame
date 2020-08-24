@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelManager : MonoBehaviour
+public class LevelManger2 : MonoBehaviour
 {
-
-    public Vector2 spawnPosition;
+    public static Vector2 spawnPosition;
 
     public Transform playerTransform;
 
