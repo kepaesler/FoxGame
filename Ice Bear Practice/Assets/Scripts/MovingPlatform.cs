@@ -13,7 +13,8 @@ public class MovingPlatform : MonoBehaviour
     [SerializeField]
     private Vector3 posDiff;
 
-    private int flip = 1;
+    [SerializeField]
+    private int flip;
 
     void Start()
     {
@@ -39,17 +40,18 @@ public class MovingPlatform : MonoBehaviour
             collision.collider.transform.SetParent(null);
         }
     }
-    // Update is called once per frame
+
     void FixedUpdate()
     {
-        if (Vector3.Distance(transform.position, pos2) < 1.0f)
-        {
-            flip = -1;
-        }
-        else if (Vector3.Distance(transform.position, pos1) < 1.0f)
-        {
-            flip = 1;
-        }
         transform.position += (flip * velocity * Time.deltaTime);
+        if (Vector3.Distance(transform.position, pos2) < 0.01f)
+        {
+            flip = flip * -1;
+        }
+        else if (Vector3.Distance(transform.position, pos1) < 0.01f)
+        {
+            flip = flip * -1;
+        }
+        //transform.position += (flip * velocity * Time.deltaTime);
     }
 }
