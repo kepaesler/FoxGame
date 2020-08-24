@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelManger2 : MonoBehaviour
+public class LevelManager1 : MonoBehaviour
 {
-    public static Vector2 spawnPosition;
+    [SerializeField]
+    private Vector2 spawnPosition = new Vector2(-5, -1);
 
     public Transform playerTransform;
 
@@ -14,7 +15,7 @@ public class LevelManger2 : MonoBehaviour
         // if player falls below stage respawn
         if (playerTransform.position.y < -10)
         {
-            playerTransform.position = spawnPosition;
+            respawn();
         }
     }
 

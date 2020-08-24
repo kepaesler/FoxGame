@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class CheckPoint : MonoBehaviour
 {
-    //public LevelManager level = new LevelManager();
+    [SerializeField]
+    private LevelManager1 level;
 
     private Vector2 spawn;
 
@@ -18,8 +19,7 @@ public class CheckPoint : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             //change respawn point
-            //level.ChangeSpawn(spawn);
-            //LevelManager2.spawnPosition = spawn;
+            level.ChangeSpawn(spawn);
             Debug.Log("change");
         }
     }

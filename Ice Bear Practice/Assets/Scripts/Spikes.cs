@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Spikes : MonoBehaviour
 {
+    [SerializeField]
+    private LevelManager1 level;
 
-    private Vector2 spawnPosition = new Vector2(-5, -1);
 
     private Transform playerTransform;
 
@@ -19,7 +20,7 @@ public class Spikes : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             //add death animation in future
-            playerTransform.position = spawnPosition;
+            level.respawn();
         }
     }
 }
