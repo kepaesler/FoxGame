@@ -20,7 +20,8 @@ public class CheckPoint : MonoBehaviour
         {
             //change respawn point
             level.ChangeSpawn(spawn);
-            Debug.Log("change");
+
+            //do checkpoint animation
         }
     }
 }
