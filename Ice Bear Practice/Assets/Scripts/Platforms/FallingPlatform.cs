@@ -7,6 +7,9 @@ public class FallingPlatform : MonoBehaviour
     [SerializeField]
     private Transform player;
 
+    [SerializeField]
+    private LevelManager1 level;
+
     //how fast to shake
     private Vector3 velocity = new Vector3(1, 0, 0);
 
@@ -36,6 +39,15 @@ public class FallingPlatform : MonoBehaviour
         pos2 = pos1 + posDiff;
     }
 
+    void reset()
+    {
+        transform.position = pos1;
+        falling = false;
+        shaking = false;
+        onPlatform = false;
+        flip = 1;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -59,14 +71,25 @@ public class FallingPlatform : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (shaking)
+        if (level.getPlatforms())
+        {
+            reset();
+        }
+        else if (shaking)
         {
             shake();
         }
         else if (falling)
         {
-            fall();
+            if (transform.position.y < -15)
+            {
+                //if platform falls off screen do nothing
+            }
+            else
+                fall();
         }
+
+
     }
 
     void shake()

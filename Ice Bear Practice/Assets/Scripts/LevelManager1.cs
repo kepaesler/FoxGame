@@ -9,8 +9,11 @@ public class LevelManager1 : MonoBehaviour
 
     public Transform playerTransform;
 
+    //used to respawn falling platforms
+    private bool platforms = false;
+
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         // if player falls below stage respawn
         if (playerTransform.position.y < -10)
@@ -22,10 +25,25 @@ public class LevelManager1 : MonoBehaviour
     public void respawn()
     {
         playerTransform.position = spawnPosition;
+        StartCoroutine(platformReset());
     }
+
+    IEnumerator platformReset()
+    {
+        platforms = true;
+        yield return new WaitForSeconds(1);
+        Debug.Log("waited");
+        platforms = false;
+    }
+
 
     public void ChangeSpawn(Vector2 spawn)
     {
         spawnPosition = spawn;
+    }
+
+    public bool getPlatforms()
+    {
+        return platforms;
     }
 }
