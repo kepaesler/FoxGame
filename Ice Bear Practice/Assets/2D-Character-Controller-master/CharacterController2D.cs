@@ -42,6 +42,8 @@ public class CharacterController2D : MonoBehaviour
     public float yWallForce;
     public float wallJumpTime = 0.5f;
 
+
+
     private void Awake()
     {
         m_Rigidbody2D = GetComponent<Rigidbody2D>();

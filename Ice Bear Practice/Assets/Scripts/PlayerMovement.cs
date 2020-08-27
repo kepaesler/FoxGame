@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -14,11 +15,16 @@ public class PlayerMovement : MonoBehaviour
     bool jump = false;
     bool crouch = false;
 
-
+    //cutscene
+    public PlayableDirector director;
 
     // Update is called once per frame
     void Update()
     {
+        if (director.state == PlayState.Playing)
+        {
+            return;
+        }
         horizontalMove = Input.GetAxisRaw("Horizontal") * runspeed;
 
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
