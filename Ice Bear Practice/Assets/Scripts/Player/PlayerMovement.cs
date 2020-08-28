@@ -18,11 +18,20 @@ public class PlayerMovement : MonoBehaviour
     //cutscene
     public PlayableDirector director;
 
+    public bool stop = false;
+
     // Update is called once per frame
     void Update()
     {
         if (director.state == PlayState.Playing)
         {
+            return;
+        }
+        else if (stop)
+        {
+            horizontalMove = 0;
+            crouch = false;
+            jump = false;
             return;
         }
         horizontalMove = Input.GetAxisRaw("Horizontal") * runspeed;
