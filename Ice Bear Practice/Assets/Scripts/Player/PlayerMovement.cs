@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     bool jump = false;
     bool crouch = false;
 
+    bool balloon = false;
+
     //cutscene
     public PlayableDirector director;
 
@@ -44,7 +46,11 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("isJumping", true);
             Debug.Log("jump");
         }
-
+        if (Input.GetButtonDown("Fire1"))
+        {
+            balloon = true;
+            Debug.Log("balloon");
+        }
         if (Input.GetButtonDown("Crouch"))
         {
             crouch = true;
@@ -72,7 +78,8 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         // move the character
-        controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
+        controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump, balloon);
         jump = false;
+        balloon = false;
     }
 }

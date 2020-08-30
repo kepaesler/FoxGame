@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using System.Collections;
 
 public class CharacterController2D : MonoBehaviour
 {
@@ -41,6 +42,14 @@ public class CharacterController2D : MonoBehaviour
     public float xWallForce;
     public float yWallForce;
     public float wallJumpTime = 0.5f;
+
+    //balloon variables
+    //once balloon is found, balloon power = true
+    public bool balloonPower = false;
+    //true if currently using balloon
+    private bool curBalloon = false;
+    //to prevent using balloon more than once
+    private bool usedBalloon = false;
 
 
 
@@ -87,8 +96,20 @@ public class CharacterController2D : MonoBehaviour
     }
 
 
-    public void Move(float move, bool crouch, bool jump)
+    public void Move(float move, bool crouch, bool jump, bool balloon)
     {
+        if (!balloonPower)
+        {
+            balloon = false;
+        }
+        // player cannot move while using balloon
+        if (curBalloon)
+        {
+            Vector2 targetVelocity = new Vector2(0, 2);
+            m_Rigidbody2D.velocity = targetVelocity;
+            return;
+        }
+
         // If crouching, check to see if the character can stand up
         if (!crouch)
         {
@@ -163,6 +184,17 @@ public class CharacterController2D : MonoBehaviour
                 Flip();
                 return;
             }
+
+            //if player can use balloon
+            if (balloon && !usedBalloon && !m_Grounded)
+            {
+                targetVelocity = new Vector2(0, 2);
+                curBalloon = true;
+                usedBalloon = true;
+
+                Debug.Log("balloon2");
+                StartCoroutine(waitBalloon());
+            }
             // And then smoothing it out and applying it to the character
             m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
 
@@ -187,10 +219,20 @@ public class CharacterController2D : MonoBehaviour
             m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
         }
 
-
+        if (m_Grounded)
+        {
+            usedBalloon = false;
+        }
 
     }
 
+    IEnumerator waitBalloon()
+    {
+        yield return new WaitForSeconds(3);
+        Debug.Log("waited");
+        //usedBalloon = false;
+        curBalloon = false;
+    }
 
     private void Flip()
     {

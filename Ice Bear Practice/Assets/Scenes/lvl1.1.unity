@@ -15659,10 +15659,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.5
-  m_Text: '!! Someone stole my hot sauce !! Who would do such a thing >:(
-
-    *You
-    grab your sword and go out to hunt the sauce bandit*'
+  m_Text: '*You wake up well rested and continue your journey*'
 --- !u!222 &1323396973
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -17991,6 +17988,7 @@ MonoBehaviour:
   animator: {fileID: 1841733038}
   runspeed: 40
   director: {fileID: 1201526136}
+  stop: 0
 --- !u!212 &1841733033
 SpriteRenderer:
   m_ObjectHideFlags: 0
