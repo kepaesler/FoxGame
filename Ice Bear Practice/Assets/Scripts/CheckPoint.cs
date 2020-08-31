@@ -9,9 +9,12 @@ public class CheckPoint : MonoBehaviour
 
     private Vector2 spawn;
 
+    private Collider2D m_Collider;
+
     void Start()
     {
         spawn = transform.position;
+        m_Collider = GetComponent<Collider2D>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -20,7 +23,8 @@ public class CheckPoint : MonoBehaviour
         {
             //change respawn point
             level.ChangeSpawn(spawn);
-
+            //disable collider after to prevent weird animations
+            m_Collider.enabled = !m_Collider.enabled;
             //do checkpoint animation
         }
     }
