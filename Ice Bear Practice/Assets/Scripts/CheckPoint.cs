@@ -26,6 +26,7 @@ public class CheckPoint : MonoBehaviour
             //disable collider after to prevent weird animations
             m_Collider.enabled = !m_Collider.enabled;
             //do checkpoint animation
+
         }
     }
 }
