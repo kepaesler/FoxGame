@@ -11,10 +11,14 @@ public class End : MonoBehaviour
     [SerializeField]
     private PlayerMovement playerMove;
 
-    public GameObject dialogBox;
-    public Text dialogText;
-    public string dialog;
-    public float transitionTime = 2f;
+    [SerializeField]
+    private GameObject dialogBox;
+    [SerializeField]
+    private Text dialogText;
+    [SerializeField]
+    private string dialog;
+    [SerializeField]
+    private float transitionTime = 2f;
 
     private void OnTriggerEnter2D(Collider2D other)
     {

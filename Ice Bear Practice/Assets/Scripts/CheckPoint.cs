@@ -11,6 +11,14 @@ public class CheckPoint : MonoBehaviour
 
     private Collider2D m_Collider;
 
+    [SerializeField]
+    private Dialogue dial;
+
+    private string reached = "CheckPoint Reached!";
+    private float transitionTime = 0.75f;
+
+    private bool done = false;
+
     void Start()
     {
         spawn = transform.position;
@@ -21,11 +29,18 @@ public class CheckPoint : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            //change respawn point
-            level.ChangeSpawn(spawn);
-            //disable collider after to prevent weird animations
-            m_Collider.enabled = !m_Collider.enabled;
-            //do checkpoint animation
+            if (!done)
+            {
+                //change respawn point
+                level.ChangeSpawn(spawn);
+                //disable collider after to prevent weird animations
+                m_Collider.enabled = !m_Collider.enabled;
+                //do checkpoint animation?
+
+                dial.changeDialogue(reached, transitionTime);
+            }
+
+            done = true;
 
         }
     }

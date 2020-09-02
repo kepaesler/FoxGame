@@ -32,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
         else if (stop)
         {
             horizontalMove = 0;
+            animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
             crouch = false;
             jump = false;
             return;

@@ -51,6 +51,8 @@ public class CharacterController2D : MonoBehaviour
     //to prevent using balloon more than once
     private bool usedBalloon = false;
 
+    private Vector2 balloonVector = new Vector2(0, 2);
+
 
 
     private void Awake()
@@ -105,8 +107,7 @@ public class CharacterController2D : MonoBehaviour
         // player cannot move while using balloon
         if (curBalloon)
         {
-            Vector2 targetVelocity = new Vector2(0, 2);
-            m_Rigidbody2D.velocity = targetVelocity;
+            m_Rigidbody2D.velocity = balloonVector;
             return;
         }
 
@@ -219,6 +220,7 @@ public class CharacterController2D : MonoBehaviour
             m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
         }
 
+        //reset balloon useage once player has reached the ground again
         if (m_Grounded)
         {
             usedBalloon = false;
@@ -228,7 +230,7 @@ public class CharacterController2D : MonoBehaviour
 
     IEnumerator waitBalloon()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2.5f);
         Debug.Log("waited");
         //usedBalloon = false;
         curBalloon = false;
