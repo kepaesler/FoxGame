@@ -53,6 +53,8 @@ public class CharacterController2D : MonoBehaviour
 
     private Vector2 balloonVector = new Vector2(0, 2);
 
+    public UnityEvent OnBalloonEvent;
+    public UnityEvent OnBalloonEmptyEvent;
 
 
     private void Awake()
@@ -107,6 +109,7 @@ public class CharacterController2D : MonoBehaviour
         // player cannot move while using balloon
         if (curBalloon)
         {
+            OnBalloonEvent.Invoke();
             m_Rigidbody2D.velocity = balloonVector;
             return;
         }
@@ -224,6 +227,7 @@ public class CharacterController2D : MonoBehaviour
         if (m_Grounded)
         {
             usedBalloon = false;
+
         }
 
     }
@@ -232,7 +236,8 @@ public class CharacterController2D : MonoBehaviour
     {
         yield return new WaitForSeconds(2.5f);
         Debug.Log("waited");
-        //usedBalloon = false;
+
+        OnBalloonEmptyEvent.Invoke();
         curBalloon = false;
     }
 

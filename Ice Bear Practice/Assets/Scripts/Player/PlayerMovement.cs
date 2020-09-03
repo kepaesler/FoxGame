@@ -76,6 +76,16 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("isCrouching", isCrouching);
     }
 
+    public void onBalloon()
+    {
+        animator.SetBool("Floating", true);
+    }
+
+    public void onBalloonEmpty()
+    {
+        animator.SetBool("Floating", false);
+    }
+
     void FixedUpdate()
     {
         // move the character

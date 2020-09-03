@@ -21,7 +21,7 @@ public class CheckPoint : MonoBehaviour
 
     void Start()
     {
-        spawn = transform.position;
+        spawn = transform.position + new Vector3(0, 1, 0);
         m_Collider = GetComponent<Collider2D>();
     }
 
