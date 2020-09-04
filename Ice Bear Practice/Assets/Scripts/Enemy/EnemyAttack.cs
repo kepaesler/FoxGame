@@ -7,7 +7,8 @@ public class EnemyAttack : MonoBehaviour
     public PlayerHP HP;
     bool isColliding = false;
 
-    public int enemyPower;
+    [SerializeField]
+    private int enemyPower;
 
     private void OnTriggerEnter2D(Collider2D other)
     {

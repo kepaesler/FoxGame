@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sauceintro : MonoBehaviour
+public class Intro : MonoBehaviour
 {
     private Collider2D m_Collider;
 
@@ -11,6 +11,8 @@ public class Sauceintro : MonoBehaviour
 
     [SerializeField]
     private string dialog;
+
+    [SerializeField]
     private float transitionTime = 2.5f;
 
 
