@@ -18,7 +18,8 @@ public class PlayerMovement : MonoBehaviour
     bool balloon = false;
 
     //cutscene
-    public PlayableDirector director;
+    [SerializeField]
+    private PlayableDirector director;
 
     public bool stop = false;
 

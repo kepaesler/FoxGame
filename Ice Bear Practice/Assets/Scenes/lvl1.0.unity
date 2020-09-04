@@ -25699,6 +25699,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1841733038}
   weapon: {fileID: 1423179999}
+  movement: {fileID: 1841733032}
+  director: {fileID: 1201526136}
 --- !u!1 &1850026615
 GameObject:
   m_ObjectHideFlags: 0

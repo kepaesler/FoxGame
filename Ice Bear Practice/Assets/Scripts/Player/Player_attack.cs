@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class Player_attack : MonoBehaviour
 {
@@ -12,6 +13,12 @@ public class Player_attack : MonoBehaviour
 
     private float attackTime = .5f;
 
+    [SerializeField]
+    private PlayerMovement movement;
+
+    [SerializeField]
+    private PlayableDirector director;
+
     void Start()
     {
         //Fetch the GameObject's Collider (make sure it has a Collider component)
@@ -21,6 +28,17 @@ public class Player_attack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //player is supposed to be stopped
+        if (movement.stop)
+        {
+            return;
+        }
+        //cutscene
+        if (director.state == PlayState.Playing)
+        {
+            return;
+        }
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             m_Collider.enabled = true;
@@ -31,9 +49,6 @@ public class Player_attack : MonoBehaviour
 
     void Attack()
     {
-        //Debug.Log("atttacckkkk");
-        //animator.SetTrigger("Weapon_Attack");
-        //Debug.Log("atttacckkkk2");
 
         //if jumping do jump attack else reg attack
         if (animator.GetBool("isJumping"))
