@@ -10,6 +10,9 @@ public class PlayerHP : MonoBehaviour
 
     public HPBar healthbar;
 
+    [SerializeField]
+    private LevelManager1 lvl;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,5 +26,11 @@ public class PlayerHP : MonoBehaviour
     {
         curHP -= dmg;
         healthbar.SetHealth(curHP);
+        if (curHP <= 0)
+        {
+            //respawn character
+            lvl.respawn();
+            healthbar.SetHealth(maxHP);
+        }
     }
 }
