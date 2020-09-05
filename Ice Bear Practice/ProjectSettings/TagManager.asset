@@ -50,3 +50,6 @@ TagManager:
   - name: Foreground
     uniqueID: 2259641791
     locked: 0
+  - name: Eagle
+    uniqueID: 2239363383
+    locked: 0

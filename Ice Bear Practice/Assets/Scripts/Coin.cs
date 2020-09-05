@@ -9,6 +9,8 @@ public class Coin : MonoBehaviour
 
     private Vector2 pos1;
     private Vector2 pos2;
+
+    [SerializeField]
     private Vector2 posDiff = new Vector2(0, 0.5f);
     public float speed = 1.0f;
 
@@ -34,7 +36,7 @@ public class Coin : MonoBehaviour
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         isColliding = false;
         transform.position = Vector2.Lerp(pos1, pos2, Mathf.PingPong(Time.time * speed, 1.0f));
