@@ -17,6 +17,9 @@ public class Coin : MonoBehaviour
     [SerializeField]
     private ParticleSystem squirtEffect;
 
+    // used to make particle effect appear at the top of sirchacha bottle
+    private float sirchachaHeight = 0.3f;
+
     void Start()
     {
         pos1 = transform.position;
@@ -27,7 +30,7 @@ public class Coin : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            squirtEffect.transform.position = transform.position + new Vector3(0, .3f, 0);
+            squirtEffect.transform.position = transform.position + new Vector3(0, sirchachaHeight, 0);
             squirtEffect.Play();
 
             //to prevent coin from double counting due to hitboxes

@@ -25,7 +25,7 @@ public class Dialogue : MonoBehaviour
         this.gameObject.SetActive(true);
         dialogText.text = desiredDialogue;
         transitionTime = time;
-        StartCoroutine(dialogWait());
+        //StartCoroutine(dialogWait());
     }
 
     IEnumerator dialogWait()
@@ -34,5 +34,15 @@ public class Dialogue : MonoBehaviour
         yield return new WaitForSeconds(transitionTime);
         playerMove.stop = false;
         this.gameObject.SetActive(false);
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            //get next dialogue or exit
+            playerMove.stop = false;
+            this.gameObject.SetActive(false);
+        }
     }
 }

@@ -1,12 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class PauseMenu : MonoBehaviour
 {
     public static bool gamePaused = false;
 
     public GameObject pauseMenuUI;
+
+    [SerializeField]
+    private GameObject dialogue;
+
+    private bool wasUsingDialogue = false;
+
+    [SerializeField]
+    private PlayableDirector director;
 
     void Start()
     {
@@ -18,14 +27,30 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            //cutscene dont pause
+            if (director.state == PlayState.Playing)
+            {
+                return;
+            }
+
             Debug.Log("ESCAPE");
             if (gamePaused)
             {
                 resume();
+                if (wasUsingDialogue)
+                {
+                    dialogue.SetActive(true);
+                    wasUsingDialogue = false;
+                }
             }
             else
             {
                 pause();
+                if (dialogue.active)
+                {
+                    dialogue.SetActive(false);
+                    wasUsingDialogue = true;
+                }
             }
         }
     }
