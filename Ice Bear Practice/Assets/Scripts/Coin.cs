@@ -14,6 +14,9 @@ public class Coin : MonoBehaviour
     private Vector2 posDiff = new Vector2(0, 0.5f);
     public float speed = 1.0f;
 
+    [SerializeField]
+    private ParticleSystem squirtEffect;
+
     void Start()
     {
         pos1 = transform.position;
@@ -24,6 +27,9 @@ public class Coin : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            squirtEffect.transform.position = transform.position + new Vector3(0, .3f, 0);
+            squirtEffect.Play();
+
             //to prevent coin from double counting due to hitboxes
             if (isColliding)
                 return;
