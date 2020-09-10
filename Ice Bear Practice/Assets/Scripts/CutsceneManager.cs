@@ -25,7 +25,7 @@ public class CutsceneManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (done)
+            if (done || (dialogueText == ""))
             {
                 director.Stop();
             }
