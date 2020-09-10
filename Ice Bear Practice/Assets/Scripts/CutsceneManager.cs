@@ -4,8 +4,19 @@ using UnityEngine;
 
 using UnityEngine.Playables;
 
+using UnityEngine.UI;
+
+
 public class CutsceneManager : MonoBehaviour
 {
+    private bool done = false;
+
+    [SerializeField]
+    private Dialogue dial;
+
+    [SerializeField]
+    private string dialogueText;
+
     [SerializeField]
     private PlayableDirector director;
 
@@ -14,7 +25,17 @@ public class CutsceneManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            director.Stop();
+            if (done)
+            {
+                director.Stop();
+            }
+            else
+            {
+                //change dialogue
+                dial.changeDialogue(dialogueText);
+
+                done = true;
+            }
         }
     }
 }

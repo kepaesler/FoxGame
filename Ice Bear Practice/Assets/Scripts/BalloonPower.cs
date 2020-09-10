@@ -15,7 +15,6 @@ public class BalloonPower : MonoBehaviour
     [SerializeField]
     private Dialogue dial;
 
-    private float transitionTime = 3f;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -23,7 +22,7 @@ public class BalloonPower : MonoBehaviour
         {
             controller.balloonPower = true;
 
-            dial.changeDialogue(dialog, transitionTime);
+            dial.changeDialogue(dialog);
             Destroy(this.gameObject);
 
 

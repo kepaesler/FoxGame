@@ -1989,7 +1989,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dial: {fileID: 1617572497}
   dialog: '*You can wall jump by pressing jump midair near a wall*'
-  transitionTime: 2.5
 --- !u!61 &449858819
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5279,7 +5278,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: (Press Space to continue)
+  m_Text: (Press SPACE to continue)
 --- !u!222 &821055844
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -21479,6 +21478,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99c6138bfbe831c4b8a52128bab445dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dial: {fileID: 1617572497}
+  dialogueText: '*Use AWSD keys to control the character!*'
   director: {fileID: 1201526136}
 --- !u!1 &1225248264
 GameObject:
@@ -24031,7 +24032,6 @@ MonoBehaviour:
   dial: {fileID: 1617572497}
   dialog: '*You see one of your beloved sirchacha hot sauces. Try to collect them
     all!"'
-  transitionTime: 2.5
 --- !u!61 &1507052999
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -27062,7 +27062,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dial: {fileID: 1617572497}
   dialog: '*Press space to attack*'
-  transitionTime: 1.5
 --- !u!61 &1879386423
 BoxCollider2D:
   m_ObjectHideFlags: 0

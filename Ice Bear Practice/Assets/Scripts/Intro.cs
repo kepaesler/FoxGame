@@ -12,15 +12,13 @@ public class Intro : MonoBehaviour
     [SerializeField]
     private string dialog;
 
-    [SerializeField]
-    private float transitionTime = 2.5f;
 
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            dial.changeDialogue(dialog, transitionTime);
+            dial.changeDialogue(dialog);
             Destroy(this.gameObject);
         }
     }

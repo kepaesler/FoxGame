@@ -19,15 +19,14 @@ public class Dialogue : MonoBehaviour
     private float transitionTime = 3f;
 
     //changes dialogue box and makes it visible (also stops player movement)
-    public void changeDialogue(string desiredDialogue, float time)
+    public void changeDialogue(string desiredDialogue)
     {
         playerMove.stop = true;
         this.gameObject.SetActive(true);
         dialogText.text = desiredDialogue;
-        transitionTime = time;
-        //StartCoroutine(dialogWait());
     }
 
+    /*
     IEnumerator dialogWait()
     {
         Debug.Log("Waiting");
@@ -35,6 +34,7 @@ public class Dialogue : MonoBehaviour
         playerMove.stop = false;
         this.gameObject.SetActive(false);
     }
+    */
 
     void Update()
     {
@@ -44,5 +44,16 @@ public class Dialogue : MonoBehaviour
             playerMove.stop = false;
             this.gameObject.SetActive(false);
         }
+    }
+
+    public void resetDialogue()
+    {
+        //clears other dialogue
+    }
+
+    //adds a dialogue slide
+    public void addDialogue(string desiredDialogue)
+    {
+
     }
 }
