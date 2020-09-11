@@ -12,6 +12,10 @@ public class LevelManager1 : MonoBehaviour
     //used to respawn falling platforms
     private bool platforms = false;
 
+    //used to reset health
+    [SerializeField]
+    private PlayerHP playerhealth;
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -25,7 +29,11 @@ public class LevelManager1 : MonoBehaviour
     public void respawn()
     {
         playerTransform.position = spawnPosition;
+        //reset health
+        playerhealth.setMaxHP();
+
         StartCoroutine(platformReset());
+
     }
 
     IEnumerator platformReset()
@@ -46,4 +54,5 @@ public class LevelManager1 : MonoBehaviour
     {
         return platforms;
     }
+
 }

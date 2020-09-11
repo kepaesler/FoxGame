@@ -8,10 +8,13 @@ public class LevelLoading : MonoBehaviour
     public Animator transition;
     public float transitionTime = 1f;
 
+    public PlayerCurrentData data;
+
 
     public void LoadNextLevel()
     {
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+        data.updateLevel();
     }
 
     IEnumerator LoadLevel(int levelIndex)

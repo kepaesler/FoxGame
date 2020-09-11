@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerHP : MonoBehaviour
 {
     public int maxHP = 100;
-    public int curHP;
+    public int curHP { get; set; }
 
 
     public HPBar healthbar;
@@ -13,14 +13,30 @@ public class PlayerHP : MonoBehaviour
     [SerializeField]
     private LevelManager1 lvl;
 
+    [SerializeField]
+    private PlayerCurrentData data;
+
     // Start is called before the first frame update
     void Start()
     {
         curHP = maxHP;
         healthbar.SetMaxHealth(maxHP);
+        data.hp = curHP;
     }
 
+    public void setHP(int hp)
+    {
+        curHP = hp;
+        healthbar.SetHealth(curHP);
+        data.hp = curHP;
+    }
 
+    public void setMaxHP()
+    {
+        curHP = maxHP;
+        healthbar.SetMaxHealth(maxHP);
+        data.hp = curHP;
+    }
 
     public void TakeDamage(int dmg)
     {
@@ -32,5 +48,8 @@ public class PlayerHP : MonoBehaviour
             lvl.respawn();
             healthbar.SetHealth(maxHP);
         }
+
+        //update save data
+        data.hp = curHP;
     }
 }
