@@ -10,9 +10,16 @@ public class PlayerCurrentData : MonoBehaviour
 {
     public static bool load = false;
 
+    public List<string> sirchachasCollected = new List<string>();
+
     public int hp { get; set; }
 
     public int level;
+
+    public int score { get; set; }
+
+    [SerializeField]
+    private ScoreManager manager;
 
     [SerializeField]
     private PlayerHP playerhealth;
@@ -28,6 +35,7 @@ public class PlayerCurrentData : MonoBehaviour
         }
     }
 
+
     public void updateLevel()
     {
         level++;
@@ -35,6 +43,7 @@ public class PlayerCurrentData : MonoBehaviour
 
     public void SavePlayer()
     {
+        score = manager.score;
         level = SceneManager.GetActiveScene().buildIndex;
         SaveSystem.SavePlayer(this);
     }
@@ -54,5 +63,12 @@ public class PlayerCurrentData : MonoBehaviour
         position.y = data.position[1];
         position.z = data.position[2];
         transform.position = position;
+
+        //load sirchachas collected 
+        sirchachasCollected = data.sirchachasCollected;
+
+        //score
+        Debug.Log(data.score);
+        manager.ChangeScore(data.score);
     }
 }

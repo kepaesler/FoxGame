@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
+    //[SerializeField]
+    //private AllSirchachasSave sirchachasSave;
+
+    [SerializeField]
+    private PlayerCurrentData data;
+
     public int coinValue = 1;
     bool isColliding = false;
 
@@ -20,10 +26,30 @@ public class Coin : MonoBehaviour
     // used to make particle effect appear at the top of sirchacha bottle
     private float sirchachaHeight = 0.3f;
 
+    private string ID;
+
     void Start()
     {
+        ID = transform.position.sqrMagnitude + "-";
+        if (data.sirchachasCollected.Contains(ID))
+        {
+            Debug.Log("Destroyed");
+            Destroy(this.gameObject);
+        }
         pos1 = transform.position;
         pos2 = pos1 + posDiff;
+        StartCoroutine(wait());
+    }
+
+    IEnumerator wait()
+    {
+        Debug.Log("Waiting");
+        yield return new WaitForSeconds(.1f);
+        if (data.sirchachasCollected.Contains(ID))
+        {
+            Debug.Log("Destroyed");
+            Destroy(this.gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -40,6 +66,10 @@ public class Coin : MonoBehaviour
 
             // count score
             ScoreManager.instance.ChangeScore(coinValue);
+
+            //add to collected
+            data.sirchachasCollected.Add(ID);
+
             //delete sirchacha
             Destroy(this.gameObject);
         }

@@ -30,7 +30,6 @@ public class CutsceneManager : MonoBehaviour
         //if player is loading game dont run opening cutscene
         if (PlayerCurrentData.load)
         {
-            Debug.Log("loaded");
             director.Stop();
 
             //needed due to director stop bug

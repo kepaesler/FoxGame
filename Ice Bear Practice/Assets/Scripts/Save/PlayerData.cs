@@ -9,6 +9,9 @@ public class PlayerData
     public int hp;
     public float[] position;
 
+    public List<string> sirchachasCollected;
+    public int score;
+
     public PlayerData(PlayerCurrentData player)
     {
         level = player.level;
@@ -19,5 +22,8 @@ public class PlayerData
         position[0] = player.transform.position.x;
         position[1] = player.transform.position.y;
         position[2] = player.transform.position.z;
+
+        sirchachasCollected = player.sirchachasCollected;
+        score = player.score;
     }
 }

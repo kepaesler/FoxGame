@@ -1720,6 +1720,7 @@ GameObject:
   - component: {fileID: 1934103774}
   - component: {fileID: 1934103773}
   - component: {fileID: 1934103775}
+  - component: {fileID: 1934103776}
   m_Layer: 5
   m_Name: BigSauce
   m_TagString: Untagged
@@ -1795,10 +1796,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21cc877340270a749a639ea53136bdaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data: {fileID: 1934103776}
   coinValue: 1
   posDiff: {x: 0, y: 10}
   speed: 1
   squirtEffect: {fileID: 0}
+--- !u!114 &1934103776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934103771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7ba7cc0290a2d445bce69a563629948, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sirchachasCollected: []
+  level: 0
+  playerhealth: {fileID: 0}
+  loading: {fileID: 0}
 --- !u!1 &2134235197
 GameObject:
   m_ObjectHideFlags: 0
