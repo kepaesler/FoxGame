@@ -21557,6 +21557,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dial: {fileID: 1617572497}
+  dialogue2: {fileID: 1617572493}
   dialogueText: '*Use AWSD keys to control the character!*'
   director: {fileID: 1201526136}
 --- !u!1 &1225248264
