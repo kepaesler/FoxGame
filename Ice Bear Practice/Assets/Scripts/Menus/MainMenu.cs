@@ -11,6 +11,13 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
+    public void LoadGame()
+    {
+        //loads level
+        PlayerData data = SaveSystem.LoadPlayer();
+        SceneManager.LoadScene(data.level);
+    }
+
     public void quitGame()
     {
         Debug.Log("Quit game");

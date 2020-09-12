@@ -27063,6 +27063,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 0
   playerhealth: {fileID: 1841733040}
+  loading: {fileID: 886754678}
 --- !u!1 &1850026615
 GameObject:
   m_ObjectHideFlags: 0

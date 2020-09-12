@@ -12,6 +12,7 @@ public class PlayerData
     public PlayerData(PlayerCurrentData player)
     {
         level = player.level;
+
         hp = player.hp;
 
         position = new float[3];

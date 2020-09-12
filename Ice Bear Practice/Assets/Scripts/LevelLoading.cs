@@ -17,6 +17,11 @@ public class LevelLoading : MonoBehaviour
         data.updateLevel();
     }
 
+    public void Load(int levelIndex)
+    {
+        LoadLevel(levelIndex);
+    }
+
     IEnumerator LoadLevel(int levelIndex)
     {
         transition.SetTrigger("Start");
