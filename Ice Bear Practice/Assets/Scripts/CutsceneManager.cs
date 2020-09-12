@@ -23,6 +23,14 @@ public class CutsceneManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //if player is loading game dont run opening cutscene
+        if (PlayerCurrentData.load)
+        {
+            Debug.Log("loaded");
+            director.Stop();
+        }
+
+        //press space to continue 
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (done || (dialogueText == ""))

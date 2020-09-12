@@ -8,10 +8,11 @@ using UnityEngine.SceneManagement;
 //class that keeps track of data to save
 public class PlayerCurrentData : MonoBehaviour
 {
+    public static bool load = false;
 
     public int hp { get; set; }
 
-    public int level = 1;
+    public int level;
 
     [SerializeField]
     private PlayerHP playerhealth;
@@ -21,7 +22,10 @@ public class PlayerCurrentData : MonoBehaviour
 
     void Start()
     {
-        level = 1;
+        if (load)
+        {
+            LoadPlayer();
+        }
     }
 
     public void updateLevel()

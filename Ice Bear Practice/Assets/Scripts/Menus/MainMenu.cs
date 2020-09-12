@@ -16,6 +16,7 @@ public class MainMenu : MonoBehaviour
         //loads level
         PlayerData data = SaveSystem.LoadPlayer();
         SceneManager.LoadScene(data.level);
+        PlayerCurrentData.load = true;
     }
 
     public void quitGame()
