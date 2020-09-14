@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System;
 
 public static class SaveSystem
 {
@@ -12,9 +13,18 @@ public static class SaveSystem
         FileStream stream = new FileStream(path, FileMode.Create);
 
         PlayerData data = new PlayerData(playercurdata);
-
-        formatter.Serialize(stream, data);
-        stream.Close();
+        try
+        {
+            formatter.Serialize(stream, data);
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e);
+        }
+        finally
+        {
+            stream.Close();
+        }
     }
 
     public static PlayerData LoadPlayer()
@@ -25,8 +35,19 @@ public static class SaveSystem
         {
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
-            PlayerData data = formatter.Deserialize(stream) as PlayerData;
-            stream.Close();
+            PlayerData data = null;
+            try
+            {
+                data = formatter.Deserialize(stream) as PlayerData;
+            }
+            catch (Exception e)
+            {
+                Debug.Log(e);
+            }
+            finally
+            {
+                stream.Close();
+            }
 
             return data;
         }
