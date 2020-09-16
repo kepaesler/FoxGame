@@ -14,9 +14,6 @@ public class CutsceneManager : MonoBehaviour
     [SerializeField]
     private Dialogue dial;
 
-    //needed due to director stop bug
-    [SerializeField]
-    private GameObject dialogue2;
 
     [SerializeField]
     private string dialogueText;
@@ -33,7 +30,9 @@ public class CutsceneManager : MonoBehaviour
             director.Stop();
 
             //needed due to director stop bug
-            dialogue2.SetActive(false);
+            dial.gameObject.SetActive(false);
+            Debug.Log("dialogueLoadcheck");
+            this.gameObject.SetActive(false);
         }
 
         //press space to continue 
