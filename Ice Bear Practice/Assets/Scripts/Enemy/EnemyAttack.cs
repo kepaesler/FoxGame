@@ -7,8 +7,12 @@ public class EnemyAttack : MonoBehaviour
     public PlayerHP HP;
     bool isColliding = false;
 
+
     [SerializeField]
     private int enemyPower;
+
+    [SerializeField]
+    private PlayerHP enemyHP;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -24,7 +28,10 @@ public class EnemyAttack : MonoBehaviour
 
         if (other.gameObject.CompareTag("weapon"))
         {
-            Destroy(this.gameObject);
+            //Weapon weap = (Weapon)other.gameObject;
+            Debug.Log("hit");
+            enemyHP.TakeDamage(50);
+            //Destroy(this.gameObject);
         }
     }
 
