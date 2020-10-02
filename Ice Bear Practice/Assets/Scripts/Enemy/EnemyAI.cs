@@ -20,6 +20,10 @@ public class EnemyAI : MonoBehaviour
     Seeker seeker;
     Rigidbody2D rb;
 
+    //if hunting = true enemy follows player else enemy stays put
+    public bool hunting = true;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +50,10 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        //if hunting = true enemy follows player else enemy stays put
+        if (!hunting)
+            return;
+
         if (path == null)
             return;
 

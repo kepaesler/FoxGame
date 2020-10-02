@@ -23,6 +23,9 @@ public class Coin : MonoBehaviour
     [SerializeField]
     private ParticleSystem squirtEffect;
 
+    [SerializeField]
+    private Vector3 offset = new Vector3(0, 0, 0);
+
     // used to make particle effect appear at the top of sirchacha bottle
     private float sirchachaHeight = 0.3f;
 
@@ -38,6 +41,7 @@ public class Coin : MonoBehaviour
         }
         pos1 = transform.position;
         pos2 = pos1 + posDiff;
+        transform.position += offset;
         StartCoroutine(wait());
     }
 
@@ -78,6 +82,20 @@ public class Coin : MonoBehaviour
     void FixedUpdate()
     {
         isColliding = false;
-        transform.position = Vector2.Lerp(pos1, pos2, Mathf.PingPong(Time.time * speed, 1.0f));
+        //transform.position = Vector2.Lerp(pos1, pos2, Mathf.PingPong(Time.time * speed, 1.0f));
+
+
+        float range = Vector3.Distance(pos1, pos2);
+        float distanceTraveled = Vector3.Distance(pos1, transform.position);
+        // Doing it this way so you character can start at anypoint in the transition...
+        float currentRatio = Mathf.Clamp01(distanceTraveled / range + Time.deltaTime);
+
+        transform.position = Vector3.Lerp(pos1, pos2, currentRatio);
+        if (Mathf.Approximately(currentRatio, 1.0f))
+        {
+            Vector3 tempSwitch = pos1;
+            pos1 = pos2;
+            pos2 = tempSwitch;
+        }
     }
 }
