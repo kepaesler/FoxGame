@@ -15,7 +15,6 @@ public class Dialogue : MonoBehaviour
     private Text dialogText;
 
 
-
     //changes dialogue box and makes it visible (also stops player movement)
     public void changeDialogue(string desiredDialogue)
     {
@@ -23,6 +22,7 @@ public class Dialogue : MonoBehaviour
         playerMove.stop = true;
         this.gameObject.SetActive(true);
         dialogText.text = desiredDialogue;
+
     }
 
     /*

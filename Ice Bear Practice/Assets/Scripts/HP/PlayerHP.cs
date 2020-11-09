@@ -62,7 +62,8 @@ public class PlayerHP : MonoBehaviour
     {
         curHP -= dmg;
         healthbar.SetHealth(curHP);
-        updateText();
+        if (HPnumbers != null)
+            updateText();
         if (curHP <= 0)
         {
             if (isPlayer)
