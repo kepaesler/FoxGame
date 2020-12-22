@@ -33,7 +33,7 @@ public class EnemyAttack : MonoBehaviour
         {
             //Weapon weap = (Weapon)other.gameObject;
             Debug.Log("hit");
-            enemyHP.TakeDamage(50);
+            enemyHP.TakeDamage(playerPower);
             //if (enemyHP.curHP <= 0)
             //    Destroy(this.gameObject);
         }
