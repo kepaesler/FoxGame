@@ -14,6 +14,14 @@ public class Dialogue : MonoBehaviour
     [SerializeField]
     private Text dialogText;
 
+    [SerializeField]
+    private bool hasNext = false;
+
+    public List<string> next;
+    public int i =0;
+
+    public bool bossTrigger = false;
+    public BossEncounter boss;
 
     //changes dialogue box and makes it visible (also stops player movement)
     public void changeDialogue(string desiredDialogue)
@@ -25,23 +33,39 @@ public class Dialogue : MonoBehaviour
 
     }
 
-    /*
-    IEnumerator dialogWait()
+   public void changeDialogueList(List<string> desiredDialogue)
     {
-        Debug.Log("Waiting");
-        yield return new WaitForSeconds(transitionTime);
-        playerMove.stop = false;
-        this.gameObject.SetActive(false);
+        playerMove.stop = true;
+        this.gameObject.SetActive(true);
+        next = desiredDialogue;
+        if(next.Count != 0)
+            hasNext = true;
     }
-    */
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             //get next dialogue or exit
-            playerMove.stop = false;
-            this.gameObject.SetActive(false);
+            if (hasNext)
+            {
+
+                dialogText.text = next[i];
+                i += 1; 
+                if(i>= next.Count)
+                {
+                    hasNext = false;
+                    if (bossTrigger)
+                    {
+                        boss.StartFight();
+                    }
+                }
+            }
+            else
+            {
+                playerMove.stop = false;
+                this.gameObject.SetActive(false);
+            }
         }
     }
 

@@ -14,6 +14,9 @@ public class EnemyAttack : MonoBehaviour
     [SerializeField]
     private PlayerHP enemyHP;
 
+    [SerializeField]
+    private int playerPower = 50;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
